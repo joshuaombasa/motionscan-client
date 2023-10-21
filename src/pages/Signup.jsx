@@ -1,5 +1,5 @@
 import React from "react";
-import { Form } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 
 export async function loader({request}) {
     return null
@@ -22,7 +22,9 @@ export default function Signup() {
                     <input type="tel" name="phoneNumber" placeholder="Phone (digits only)"/>
                     <button className="login--btn">Register</button>
                 </Form>
-                <p>Already have an account? <span className="sign--up--link"> Sign in</span></p>
+                <p>Already have an account? 
+                    <Link to="/login" className="sign--up--link">  Sign in</Link>
+                </p>
             </div>
         </div>
     )
