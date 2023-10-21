@@ -17,7 +17,7 @@ export default function HospitalScanners() {
     
     return (
         <div className="hospital--scanners--page">
-            <h1>This is hospital scanners page</h1>
+            <h1>Your listed  scanners</h1>
             <div className="hospital--scanners--container">
                 {hospitalScannerElements}
             </div>
