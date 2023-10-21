@@ -11,7 +11,7 @@ export default function SelectedHospitalScannerDetails() {
     return (
         <div className="selected--hospital--scanner">
             <p>Name:  <span className="lite--text">{data.name}</span></p>
-            <p>Category:  <span className="lite--text" style={statusStyle}>{data.status}</span></p>
+            <p>Status:  <span className="lite--text" style={statusStyle}>{data.status}</span></p>
             <p>Description:  <span className="lite--text">{data.description}</span></p>
             <p>Visibility:  <span className="lite--text">Public</span></p>
         </div>
