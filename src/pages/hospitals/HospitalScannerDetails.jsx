@@ -38,6 +38,7 @@ export default function HospitalScannerDetails() {
                         <NavLink 
                              style={({isActive}) => isActive ? activeStyle : null}
                              to="."
+                             end
                              >Details</NavLink>
                         <NavLink 
                              style={({isActive}) => isActive ? activeStyle : null}
