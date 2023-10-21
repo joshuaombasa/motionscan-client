@@ -507,6 +507,7 @@ footer p {
   font-weight: 500;
   line-height: 24px;
   color: #0d2a68;
+  padding-left: 1em;
 }
 
 .login--form input,
@@ -595,7 +596,8 @@ footer p {
 
 .reviews-card {
   padding: 2em 0;
-  border-bottom: 1px solid  #C7C7C7;;
+  border-bottom: 1px solid #C7C7C7;
+  ;
 }
 
 .reviews-card .info {
@@ -620,7 +622,97 @@ footer p {
   line-height: 22.162px;
 }
 
- .review-star {
+.review-star {
   color: #ff8c38;
   margin-right: 5px;
+}
+
+.income--page--container {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.income--page--container h1 {
+  font-weight: 700;
+  line-height: 22px;
+  color: #0e343f;
+}
+
+.income--page--container>p {
+  font-weight: 500;
+  color: #0e343f;
+  line-height: 22px;
+}
+
+.income--page--container>span {
+  font-weight: 800;
+  line-height: 38px;
+  color: #0e343f;
+  font-size: 2.5rem;
+}
+
+.transactions {
+  display: flex;
+  color: #0e343f;
+  align-items: center;
+}
+
+.transactions h2 {
+  font-weight: 700;
+  line-height: 22px;
+  margin-right: 400px;
+}
+
+.transaction--item  {
+  display: flex;
+  padding: 2em;
+  background-color: white;
+  color: #477f8f;
+  margin-bottom: 1em;
+}
+
+.transaction--item h3 {
+  font-weight: 600;
+  line-height: 31.662px;
+  margin-right: 400px;
+}
+
+.transaction--item h4 {
+  font-weight: 500;
+  line-height: 31.662px;
+}
+
+.tags {
+  display: flex;
+  /* width: 500px; */
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+line-height: 22px;
+font-size: 1.1rem;
+margin-bottom: 2em;
+}
+
+/* .income-tag {
+
+} */
+
+.dashboard-page-container h1 {
+  font-weight: 700;
+line-height: 22px; 
+font-size: 2rem;
+margin-bottom: 2em;
+}
+
+.dashboard-page-container > span {
+  font-weight: 800;
+line-height: 38px;
+font-size: 2.5rem;
+margin-bottom: 1em;
+}
+
+.edit--link {
+  margin-left: auto;
+  text-decoration: underline;
 }
