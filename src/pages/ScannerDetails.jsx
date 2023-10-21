@@ -32,7 +32,7 @@ export default function ScannerDetails() {
                 <h2>{hospital.name}</h2>
                 <h3>Ksh {hospital.price}</h3>
                 <p>{hospital.description}</p>
-                <Link>Book a session</Link>
+                <Link to="/">Book a session</Link>
             </div>
         </div>
     )
