@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Link, redirect, useActionData, useLoaderData } from "react-router-dom";
 import { loginUser } from "../api";
 
-export async function loader({request}) {
+export async function loader({ request }) {
     const url = new URL(request.url)
     const params = new URLSearchParams(url.search)
     const message = params.get("message")
@@ -17,15 +17,15 @@ export async function action({ request }) {
 
     const url = new URL(request.url)
     const params = new URLSearchParams(url.search)
-    const redirectTo = params.get("redirectTo") ?  params.get("redirectTo") : "/hospital"
+    const redirectTo = params.get("redirectTo") ? params.get("redirectTo") : "/hospital"
 
     try {
         const data = await loginUser(userData)
-        
-        localStorage.setItem("isLoggedIn" , true)
+
+        localStorage.setItem("isLoggedIn", true)
         return redirect(redirectTo)
     } catch (error) {
-    
+
         return error
     }
 
@@ -45,7 +45,9 @@ export default function Login() {
                     <input type="password" name="password" placeholder="password" />
                     <button className="login--btn">Sign in</button>
                 </Form>
-                <p>Don’t have an account? <Link className="sign--up--link">Create one now</Link></p>
+                <p>Don’t have an account? 
+                    <Link to="/signup" className="sign--up--link">Create one now</Link>
+                </p>
             </div>
         </div>
     )
