@@ -6,7 +6,7 @@ import HospitalLayout, {loader as hospitalLayoutLoader} from './components/Hospi
 import Layout from './components/Layout'
 import About from './pages/About'
 import Home from './pages/Home'
-import Dashboard from './pages/hospitals/Dashboard'
+import Dashboard, {loader as dashboardLoader} from './pages/hospitals/Dashboard'
 import HospitalScanners, { loader as hospitalScannersLoader } from './pages/hospitals/HospitalScanners'
 import Income from './pages/hospitals/Income'
 import Reviews from './pages/hospitals/Reviews'
@@ -30,7 +30,7 @@ function App() {
       <Route path='scanners' element={<Scanners />} loader={scannersLoader} />
       <Route path='scanners/:id' element={<ScannerDetails />} loader={scannersDetailsLoader} />
       <Route path='hospital' element={<HospitalLayout />} loader={hospitalLayoutLoader}>
-        <Route index element={<Dashboard />} />
+        <Route index element={<Dashboard />} loader={dashboardLoader}/>
         <Route path='income' element={<Income />} />
         <Route path='scanners' element={<HospitalScanners />} loader={hospitalScannersLoader} />
         <Route path='scanners/:id' element={<HospitalScannerDetails />} loader={hospitalScannerDetailsLoader}>
