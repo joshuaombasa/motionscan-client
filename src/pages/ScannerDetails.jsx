@@ -1,16 +1,16 @@
 import React from "react";
-import { Link, useLoaderData, useLocation } from "react-router-dom";
+import { Await, defer, Link, useLoaderData, useLocation } from "react-router-dom";
 import { getHospitalDetails } from "../api";
 
 export async function loader({params}) {
-    return getHospitalDetails(params.id)
+    return defer({hospitalDetails: getHospitalDetails(params.id)})
 }
 
 export default function ScannerDetails() {
 
     const location = useLocation()
 
-    const hospital = useLoaderData()
+    const dataPromise = useLoaderData()
 
     const statusStyle = {
         backgroundColor: hospital.status === "working" ? "green" : "red"
@@ -19,9 +19,10 @@ export default function ScannerDetails() {
     const params = location.state.searchParameters ? location.state.searchParameters :""
     const filterType = location.state.filterType ? location.state.filterType : "all"
 
-    return (
-        <div className="hospital--details--page">
-            <Link 
+    function renderHospitalDetails(hospital) {
+        return (
+            <>
+              <Link 
                to={`..?${params}`} 
                relative="path" 
                className="back--link"
@@ -34,6 +35,15 @@ export default function ScannerDetails() {
                 <p>{hospital.description}</p>
                 <Link to="/">Book a session</Link>
             </div>
+            </>
+        )
+    }
+
+    return (
+        <div className="hospital--details--page">
+            <Await resolve={dataPromise.hospitalDetails}>
+                {renderHospitalDetails}
+            </Await>
         </div>
     )
 }
