@@ -1,57 +1,72 @@
-import React from "react";
-import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
+import React, { Suspense } from "react";
+import { Await, defer, Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
 import { getSelectedHospitalScanner } from "../../api";
 
 export async function loader({ params }) {
-    return getSelectedHospitalScanner(params.id)
+    return defer({hospitalScannerDetails : getSelectedHospitalScanner(params.id)})
 }
 
 export default function HospitalScannerDetails() {
-    const data = useLoaderData()
+    const dataPromise = useLoaderData()
 
-    const statusStyle = {
-        backgroundColor: data.status === "working" ? "green" : "red"
-    }
 
     const activeStyle = {
-        textDecoration : "underline"
+        textDecoration: "underline"
+    }
+
+    function renderHospitalScannerDetails(data) {
+
+        const statusStyle = {
+            backgroundColor: data.status === "working" ? "green" : "red"
+        }
+
+        
+        return (
+            <>
+                <Link
+                    to=".."
+                    relative="path"
+                    className="back--link"
+                >&larr; Back to all scanners</Link>
+                <div className="hospital--scanner--details--page--container">
+                    <div className="scanner--details--top">
+                        <img src={data.imageUrl} alt="" />
+                        <div className="text--section">
+                            <span style={statusStyle}>{data.status}</span>
+                            <h3>{data.name}</h3>
+                            <h4>Ksh {data.price}</h4>
+                        </div>
+                    </div>
+                    <div className="scanner--details--botton--section">
+                        <nav>
+                            <NavLink
+                                style={({ isActive }) => isActive ? activeStyle : null}
+                                to="."
+                                end
+                            >Details</NavLink>
+                            <NavLink
+                                style={({ isActive }) => isActive ? activeStyle : null}
+                                to="pricing"
+                            >Pricing</NavLink>
+                            <NavLink
+                                style={({ isActive }) => isActive ? activeStyle : null}
+                                to="photos"
+                            >Photos</NavLink>
+                        </nav>
+                        <Outlet context={data} />
+                    </div>
+                </div>
+            </>
+        )
     }
 
     return (
         <div className="hospital--scanner--details--page">
-            <Link 
-                to=".." 
-                relative="path" 
-                className="back--link"
-            >&larr; Back to all scanners</Link>
-            <div className="hospital--scanner--details--page--container">
-                <div className="scanner--details--top">
-                    <img src={data.imageUrl} alt="" />
-                    <div className="text--section">
-                        <span style={statusStyle}>{data.status}</span>
-                        <h3>{data.name}</h3>
-                        <h4>Ksh {data.price}</h4>
-                    </div>
-                </div>
-                <div className="scanner--details--botton--section">
-                    <nav>
-                        <NavLink 
-                             style={({isActive}) => isActive ? activeStyle : null}
-                             to="."
-                             end
-                             >Details</NavLink>
-                        <NavLink 
-                             style={({isActive}) => isActive ? activeStyle : null}
-                             to="pricing"
-                             >Pricing</NavLink>
-                        <NavLink 
-                             style={({isActive}) => isActive ? activeStyle : null}
-                             to="photos"
-                             >Photos</NavLink>
-                    </nav>
-                    <Outlet context={data}/>
-                </div>
-            </div>
+            <Suspense fallback={<h1>Loading...</h1>}>
+                <Await resolve={dataPromise.hospitalScannerDetails}>
+                    { renderHospitalScannerDetails }
+                </Await>
+            </Suspense>
         </div>
     )
 }
