@@ -29,7 +29,7 @@ export default function Scanners() {
 
 
 
-    function renderScanners() {
+    function renderScanners(hospitalsData) {
 
         const filteredHospitalsData = filterType ?
             hospitalsData.filter(hospital => hospital.status === filterType)
@@ -69,9 +69,11 @@ export default function Scanners() {
 
     return (
         <div className="hospitals--page">
-            <Await resolve={dataPromise.scanners}>
-                {renderScanners}
-            </Await>
+            <Suspense fallback={<h1>Loading...</h1>}>
+                <Await resolve={dataPromise.scanners}>
+                    {renderScanners}
+                </Await>
+            </Suspense>
         </div>
     )
 }
