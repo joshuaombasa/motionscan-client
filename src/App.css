@@ -703,6 +703,7 @@ margin-bottom: 2em;
 line-height: 22px; 
 font-size: 2rem;
 margin-bottom: 2em;
+color: #255b71;
 }
 
 .dashboard-page-container > span {
@@ -710,9 +711,19 @@ margin-bottom: 2em;
 line-height: 38px;
 font-size: 2.5rem;
 margin-bottom: 1em;
+color: #116981;
 }
 
 .edit--link {
   margin-left: auto;
   text-decoration: underline;
 }
+
+.listings-tag  {
+  padding: 2em 0;
+}
+
+.listings-tag h2 {
+  color: #116981;
+}
+
