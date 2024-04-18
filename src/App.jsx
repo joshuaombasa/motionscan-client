@@ -19,6 +19,7 @@ import SelectedHospitalScannerPhotos from './components/SelectedHospitalScannerP
 import NotFound from './pages/NotFound'
 import Login, {action as loginAction, loader as loginLoader} from './pages/Login'
 import Signup, {action as signupAction, loader as signupLoader} from './pages/Signup'
+import NewHospital from './pages/hospitals/NewScanner'
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path='pricing' element={<SelectedHospitalScannerPricing/>}/>
           <Route path='photos' element={<SelectedHospitalScannerPhotos/>}/>
         </Route>
+        <Route path='newhospital'  element={<NewHospital/>}/>
         <Route path='reviews' element={<Reviews />} />
       </Route>
       <Route path='/login' element={<Login/>} action={loginAction} loader={loginLoader}/>
