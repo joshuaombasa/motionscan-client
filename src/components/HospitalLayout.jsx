@@ -32,6 +32,10 @@ export default function HospitalLayout() {
                     to="reviews" 
                     style={({isActive}) => isActive ? activeStyle : null}
                 >Reviews</NavLink>
+                <NavLink
+                    to="newhospital" 
+                    style={({isActive}) => isActive ? activeStyle : null}
+                >New Hospital</NavLink>
             </nav>
             
             <Outlet/>
