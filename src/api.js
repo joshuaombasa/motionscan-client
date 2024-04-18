@@ -15,7 +15,7 @@ export async function getAllHospitalMachines() {
 
 
 export async function getHospitalDetails(id) {
-    const res =  await fetch(`http://localhost:3000/api/scanners/${id}`)
+    const res = await fetch(`http://localhost:3000/api/scanners/${id}`)
     const data = await res.json()
     if (!res.ok) {
         throw {
@@ -29,7 +29,7 @@ export async function getHospitalDetails(id) {
 }
 
 export async function getHospitalScanners() {
-    const res = await fetch("http://localhost:3000/api/hospital/scanners")
+    const res = await fetch("http://localhost:3000/api/scanners")
     const data = await res.json()
     if (!res.ok) {
         throw {
@@ -43,7 +43,7 @@ export async function getHospitalScanners() {
 }
 
 export async function getSelectedHospitalScanner(id) {
-    const res =  await fetch(`http://localhost:3000/api/scanners/${id}`)
+    const res = await fetch(`http://localhost:3000/api/scanners/${id}`)
     const data = await res.json()
     if (!res.ok) {
         throw {
@@ -73,6 +73,27 @@ export async function loginUser(userData) {
             statusText: res.statusText,
         }
     }
-
+    console.log(data)
     return data
+    
+}
+
+export async function createScanner(scannerData) {
+    const res = await fetch("http://localhost:3000/api/scanners", {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(scannerData)
+    })
+
+    const data = await res.json()
+
+    if (!res.ok) {
+        throw {
+            message: data.message,
+            status: res.status,
+            statusText: res.statusText,
+        }
+    }
 }
