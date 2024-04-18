@@ -2,7 +2,7 @@
 *::after,
 *::before {
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Inter', sans-serif; */
 }
 
 h1,
@@ -39,7 +39,7 @@ body {
 
 header {
   display: flex;
-  padding: 2em;
+  padding: 1em;
 }
 
 .logo {
@@ -59,7 +59,7 @@ header nav {
 header nav a {
   /* color: rgb(59, 94, 199); */
   color: rgb(9, 9, 35);
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   font-weight: 500;
 }
 
@@ -68,7 +68,7 @@ header nav a:hover {
 }
 
 footer {
-  padding: 2em;
+  padding: 1em;
 }
 
 footer p {
@@ -316,7 +316,7 @@ footer p {
   font-weight: 500;
   line-height: 23.919px;
   padding: 0.5em 0;
-  width: 200px;
+  width: 150px;
 }
 
 .dashboard--page,
@@ -511,7 +511,8 @@ footer p {
 }
 
 .login--form input,
-.signup--form input {
+.signup--form input,
+.new-hospital-form input {
   display: block;
   width: 100%;
   padding: 0.5em 2em;
@@ -535,7 +536,7 @@ footer p {
   border-radius: 0 0 6px 6px;
 }
 
-.login--btn {
+.login--btn, .signup-btn {
   font-size: 1.3rem;
   padding: 0.6em 0;
   width: 100%;
@@ -561,7 +562,7 @@ footer p {
   width: 50%;
 }
 
-.sign--up--page--container {
+.sign--up--page--container, .new-hospital-page-container {
   padding: 3em;
   background-color: #fff;
   margin: auto;
@@ -569,17 +570,21 @@ footer p {
   border-radius: 10px;
 }
 
-.sign--up--page--container h1 {
+.sign--up--page--container h1, .new-hospital-page h1 {
   line-height: 21.46px;
   color: #368da5;
   margin-bottom: 2em;
+  text-align: center;
 }
 
-.signup--form {
+.signup--form, .new-hospital-form {
   width: 100%;
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
 }
 
-.signup--form input {
+.signup--form input, .new-hospital-form input {
   width: 100%;
   border-radius: 6px 6px 6px 6px;
   margin-bottom: 2em;
@@ -727,3 +732,14 @@ color: #116981;
   color: #116981;
 }
 
+.new-hospital-page {
+  display: flex;
+  flex-direction: column;
+  padding: 2em 0;
+}
+
+.new-hospital-form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
